@@ -24,12 +24,14 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --dts --format cjs,esm"
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "prettier": "prettier --write --ignore-path .gitignore ."
   },
   "peerDependencies": {
     "vite": "^2.7.10"
   },
   "devDependencies": {
+    "prettier": "^2.5.1",
     "tsup": "^5.11.11",
     "typescript": "^4.5.4",
     "vite": "^2.7.10"
