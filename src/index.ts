@@ -15,9 +15,9 @@ const getOrigin = (server): string => {
 const replace = (code: string, replaces: string[], server): string => {
   const origin = getOrigin(server);
 
-  replaces.forEach((replace: string) => {
-    const regex = new RegExp(`${replace}`, "g");
-    code = code.replace(regex, `${origin}${replace}`);
+  replaces.forEach((pattern: string) => {
+    const regex = new RegExp(`${pattern}`, "g");
+    code = code.replace(regex, `${origin}${pattern}`);
   });
 
   return code;
