@@ -4,12 +4,12 @@ type AssetsPluginOptions = {
   replaces: string[];
 };
 
-const getOrigin = (server): string => {
+export const getOrigin = (server): string => {
   const host = server.host || 'localhost';
-  const port = server.port;
-  const protocol = server.https ? 'https' : 'http';
+  const port = server.port ? `:${server.port}` : '';
+  const protocol = server.https ? 'https://' : 'http://';
 
-  return `${protocol}://${host}:${port}`;
+  return `${protocol}${host}${port}`;
 };
 
 const replace = (code: string, replaces: string[], server): string => {
