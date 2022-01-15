@@ -1,13 +1,13 @@
-import { PluginOption } from "vite";
+import { PluginOption } from 'vite';
 
 type AssetsPluginOptions = {
   replaces: string[];
 };
 
 const getOrigin = (server): string => {
-  const host = server.host || "localhost";
+  const host = server.host || 'localhost';
   const port = server.port;
-  const protocol = server.https ? "https" : "http";
+  const protocol = server.https ? 'https' : 'http';
 
   return `${protocol}://${host}:${port}`;
 };
@@ -16,7 +16,7 @@ const replace = (code: string, replaces: string[], server): string => {
   const origin = getOrigin(server);
 
   replaces.forEach((pattern: string) => {
-    const regex = new RegExp(`${pattern}`, "g");
+    const regex = new RegExp(`${pattern}`, 'g');
     code = code.replace(regex, `${origin}${pattern}`);
   });
 
@@ -26,9 +26,9 @@ const replace = (code: string, replaces: string[], server): string => {
 export default function assets(options: AssetsPluginOptions): PluginOption {
   let server;
   return {
-    name: "assets",
-    apply: "serve",
-    enforce: "post",
+    name: 'assets',
+    apply: 'serve',
+    enforce: 'post',
     configureServer(vite) {
       server = vite.config.server;
     },
